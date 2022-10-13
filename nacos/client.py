@@ -557,7 +557,7 @@ class NacosClient:
             key_list = self.process_mgr.list()
             key_list.append(cache_key)
             sys_os = platform.system()
-            if sys_os == 'Windows':
+            if sys_os in ('Windows','Darwin'):
                 puller = Thread(target=self._do_pulling, args=(key_list, self.notify_queue))
                 puller.setDaemon(True)
             else:
